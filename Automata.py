@@ -44,6 +44,7 @@ N = int(sys.stdin.readline())
 for i in range(N):
     print("INGRESE LA PALABRA")
     S = (sys.stdin.readline().strip())
+    estadoa = 0
     print("Estado INICIAL q_" + str(estadoa))  # ESTADO INICIAL
     for j in range(len(S)):
         estadoa = getW(estadoa,S[j], Matriz, Alpha)
