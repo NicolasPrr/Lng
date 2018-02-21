@@ -17,6 +17,8 @@ print("Ingrese el alfabeto separado por espacio")
 Alpha=(sys.stdin.readline().strip().split(" "))
 print("Ingrese el numero de estados")
 T = int(sys.stdin.readline())
+print("Los estados son los elementos: ")
+print(*range(T))
 Matriz =  []
 for i in range(T):
     Matriz.append([i])
@@ -31,6 +33,7 @@ for i in range(T):
         S = int(sys.stdin.readline())
         Matriz[i][j] = S
 
+printMatriz(Matriz)
 print("Ingrese los estados finales")
 estadosf=(sys.stdin.readline().strip().split(" "))
 estadoa = 0
@@ -40,13 +43,15 @@ print("Ingrese el numero de pruebas ")
 N = int(sys.stdin.readline())
 for i in range(N):
     print("INGRESE LA PALABRA")
-    S = (sys.stdin.readline())
+    S = (sys.stdin.readline().strip())
+    print("Estado INICIAL q_" + str(estadoa))  # ESTADO INICIAL
     for j in range(len(S)):
-        print("Estado actual q_" + str(estadoa)) #RECORRIDO DE ESTADOS
         estadoa = getW(estadoa,S[j], Matriz, Alpha)
+        print("Estado actual q_" + str(estadoa)) #RECORRIDO DE ESTADOS
 
-    if estadoa in estadosf :
-        print("ACEPTA LA PALARBA: " + S)
+
+    if str(estadoa) in estadosf : #se hace el cast porque estadosf los reconoce como strings
+        print("ACEPTA LA PALARBA: " + S.strip())
     else:
         print("NO LO ACEPTA: " + S)
 
